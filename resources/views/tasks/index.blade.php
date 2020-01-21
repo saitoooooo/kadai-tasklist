@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>タスク一覧</h1>
-
+    @if (Auth::check())
     @if (count($tasks) > 0)
         <table class="table table-striped">
             <thead>
@@ -25,4 +25,7 @@
         </table>
     @endif
     {!! link_to_route('tasks.create', '新規タスクの投稿', [], ['class' => 'btn btn-primary']) !!}
+    @else
+    {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
+    @endif
 @endsection
